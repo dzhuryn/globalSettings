@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS `{PREFIX}module_settings_category`;
-CREATE TABLE `mjsk_evoshop_orders` (
+CREATE TABLE `{PREFIX}module_settings_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `short_txt` text NOT NULL,
   `content` text,
