@@ -1,22 +1,22 @@
 DROP TABLE IF EXISTS `{PREFIX}module_settings_category`;
 CREATE TABLE `{PREFIX}module_settings_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `short_txt` text NOT NULL,
-  `content` text,
-  `price` varchar(255) NOT NULL,
-  `currency` varchar(255) NOT NULL,
-  `date` datetime DEFAULT NULL,
-  `sentdate` datetime DEFAULT NULL,
-  `note` text NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `payment` varchar(128) NOT NULL,
-  `delivery` text,
-  `discount` text,
-  `tracking_num` varchar(32) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `managerid` int(11) NOT NULL,
-  `1c_exchange` int(10) NOT NULL DEFAULT '0',
+  `caption` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `{PREFIX}module_settings`;
+CREATE TABLE `{PREFIX}module_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `index` int(11) DEFAULT '4',
+  `description` varchar(255) DEFAULT NULL,
+  `elements` tinytext,
+  `category` int(11) DEFAULT NULL,
+  `type` varchar(15) DEFAULT NULL,
+  `value` text,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `{PREFIX}evoshop_status` (`caption`) VALUES ('Без категории');
