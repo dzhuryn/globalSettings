@@ -14,7 +14,7 @@ $modulePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__);
 
 require 'classes/settings.php';
 $obj = new settings($modx);
-//var_dump($modx->config);
+$obj->firstStart();
 
 
 switch ($action) {

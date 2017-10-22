@@ -22,6 +22,32 @@ class settings
         $this->SC = $this->modx->getFullTableName('module_settings_category');
         $this->SS = $this->modx->getFullTableName('system_settings');
     }
+    public function firstStart()
+    {
+        global $modx;
+        $sql = " CREATE TABLE IF NOT EXISTS " . $modx->getFullTableName('module_settings_category') . " (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `caption` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+        $modx->db->query($sql);
+        $sql = " CREATE TABLE IF NOT EXISTS " . $modx->getFullTableName('module_settings') . " (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `index` int(11) DEFAULT '4',
+  `description` varchar(255) DEFAULT NULL,
+  `elements` tinytext,
+  `category` int(11) DEFAULT NULL,
+  `type` varchar(15) DEFAULT NULL,
+  `value` text,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
+        $modx->db->query($sql);
+        $sql = "INSERT INTO " . $modx->getFullTableName('module_settings_category') . " (`caption`) VALUES ('Без категории');";
+        $modx->db->query($sql);
+
+
+    }
 
     public function getCategory()
     {
