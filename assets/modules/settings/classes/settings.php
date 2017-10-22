@@ -43,10 +43,12 @@ class settings
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
         $modx->db->query($sql);
-        $sql = "INSERT INTO " . $modx->getFullTableName('module_settings_category') . " (`caption`) VALUES ('Без категории');";
-        $modx->db->query($sql);
 
-
+        $count = $modx->db->getValue($modx->db->query("select id from ".$modx->getFullTableName('module_settings_category')." where `caption` = 'Без категории'"));
+        if(empty($count)){
+            $sql = "INSERT INTO " . $modx->getFullTableName('module_settings_category') . " (`caption`) VALUES ('Без категории');";
+            $modx->db->query($sql);
+        }
     }
 
     public function getCategory()

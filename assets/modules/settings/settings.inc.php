@@ -8,9 +8,7 @@ if (!$modx->hasPermission('exec_module')) {
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 $moduleurl = '/manager/index.php?a=112&id=' . $_GET['id'] . '&';
-$modulePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', __DIR__);
-
-//$moduleurl = '/assets/modules/settings/settings.inc.php?api=1&';
+$modulePath = '/assets/modules/settings/';
 
 require 'classes/settings.php';
 $obj = new settings($modx);
