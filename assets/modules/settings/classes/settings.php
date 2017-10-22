@@ -394,10 +394,14 @@ class settings
 
     public function saveValues($resp)
     {
+
+
         $data = [];
+
         foreach ($resp as $key => $item) {
             $name = $item['name'];
             $value = $item['value'];
+
             if (strpos($name, '_mtv') === false) {
                 if (strpos($value, '{"fieldValue":[{') === false) {
                     if (empty($data[$name])) {
@@ -405,9 +409,12 @@ class settings
                     } else {
                         $data[$name] .= '||' . $value;
                     }
+
                 } else {
+
                     $id = intval(str_replace('tv', '', $name));
                     $name = $this->modx->db->getValue($this->modx->db->query("select name from $this->S where `id` = '$id'"));
+
                     $data[$name] = $value;
                 }
 
@@ -417,7 +424,7 @@ class settings
 
         foreach ($data as $name => $value) {
             $name = $this->modx->db->escape($name);
-            $value = $this->modx->db->escape($value);
+            $valueEscape = $this->modx->db->escape($value);
 
             $this->modx->db->update([
                 'value' => $value
@@ -428,8 +435,20 @@ class settings
             $resp = $this->modx->db->getValue($this->modx->db->query("select setting_name from $this->SS where `setting_name` = '$name'"));
             $fields = [
                 'setting_name'=>$name,
-                'setting_value'=>$value,
+                'setting_value'=>$valueEscape,
             ];
+
+            //для настроек убираем обертку fieldValue чтобы использовать параметр fromJson для multitv
+
+            if (strpos($value, '{"fieldValue":[{') !== false) {
+                $value = json_decode($value,true);
+                if(!empty($value['fieldValue'])){
+                    $value = $value['fieldValue'];
+                }
+                $value = json_encode($value);
+                $valueEscape = $this->modx->db->escape($value);
+                $fields['setting_value'] = $valueEscape;
+            }
 
             if(empty($resp)){
                 $this->modx->db->insert($fields,$this->SS);
