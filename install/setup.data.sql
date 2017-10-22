@@ -17,5 +17,3 @@ CREATE TABLE `{PREFIX}module_settings` (
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-INSERT INTO `{PREFIX}module_settings_category` (`caption`) VALUES ('Без категории');
