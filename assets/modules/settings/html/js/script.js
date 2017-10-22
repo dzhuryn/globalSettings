@@ -6,7 +6,7 @@ $(document).on('click','.edit-field',function(e){
     e.preventDefault();
     popup.show();
     var id = $(this).parent().data('id');
-    $$('fieldInfo').load(ajaxUrl+"action=loadData&id="+id);
+    $$('fieldInfo').load(ajaxUrl+"action=loadData&elem="+id);
     $$("fieldInfo").setValues({
         id: id
 

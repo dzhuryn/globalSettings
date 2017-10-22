@@ -18,7 +18,7 @@ $obj->firstStart();
 switch ($action) {
 
     case 'loadData':
-        echo json_encode($obj->loadData($_GET['id']));
+        echo json_encode($obj->loadData($_GET['elem']));
         die();
         break;
     case 'save-sort':
