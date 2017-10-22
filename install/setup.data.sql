@@ -21,4 +21,4 @@ CREATE TABLE `{PREFIX}module_settings` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `{PREFIX}evoshop_status` (`caption`) VALUES ('Без категории');
+INSERT INTO `{PREFIX}module_settings_category` (`caption`) VALUES ('Без категории');
