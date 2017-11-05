@@ -40,7 +40,7 @@ $(document).on('click','.delete-field',function (e) {
         cancel:"Нет",
         callback:function (result) {
             if(result){
-                $.get(ajaxUrl, {action: "delete-field", id: id}, function (data) {
+                $.get(ajaxUrl, {action: "delete-field", item: id}, function (data) {
                     data = JSON.parse(data);
                     if(data['status']){
                         webix.message(data['msg']);

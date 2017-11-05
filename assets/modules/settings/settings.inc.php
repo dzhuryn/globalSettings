@@ -25,7 +25,7 @@ switch ($action) {
         $obj->saveSorting($_GET['data']);
         break;
     case 'delete-field':
-        echo json_encode($obj->deleteField($_GET['id']));
+        echo json_encode($obj->deleteField($_GET['item']));
         break;
     case 'getForm':
         $categories = $obj->getForm();
