@@ -21,7 +21,7 @@
         jQuery('form').each(function (ind,elem) {
            var str = JSON.stringify(jQuery('form').serializeArray())
             str = str.replace("}}", "} }");
-            webix.ajax().get("[+moduleurl+]action=saveValues", {data:str}, function(text){
+            webix.ajax().post("[+moduleurl+]action=saveValues", {data:str}, function(text){
                 webix.message('Сохранено');
             })
         })

@@ -35,7 +35,7 @@ switch ($action) {
         die();
         break;
     case 'saveValues':
-        $obj->saveValues(json_decode($_GET['data'], true));
+        $obj->saveValues(json_decode($_POST['data'], true));
         break;
     case 'get-category':
         $categories = $obj->getCategory();
