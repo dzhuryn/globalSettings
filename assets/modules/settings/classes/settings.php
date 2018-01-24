@@ -427,7 +427,7 @@ class settings
             $valueEscape = $this->modx->db->escape($value);
 
             $this->modx->db->update([
-                'value' => $value
+                'value' => $valueEscape
             ], $this->S, 'name = "' . $name . '"');
 
 

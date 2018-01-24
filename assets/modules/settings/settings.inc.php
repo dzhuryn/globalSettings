@@ -36,6 +36,7 @@ switch ($action) {
         break;
     case 'saveValues':
         $obj->saveValues(json_decode($_POST['data'], true));
+        $modx->clearCache('full');
         break;
     case 'get-category':
         $categories = $obj->getCategory();
